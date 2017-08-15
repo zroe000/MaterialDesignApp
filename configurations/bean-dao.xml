@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+
+
+
+
+    <bean id="redmineUserDao" class="com.springapp.material.dao.impl.RedmineUserDAOImpl">
+        <property name="sessionFactory" ref="mySessionFactory" />
+    </bean>
+    <bean id="redmineGroupDao" class="com.springapp.material.dao.impl.RedmineGroupDAOImpl">
+        <property name = "sessionFactory" ref="mySessionFactory" />
+    </bean>
+    <bean id = "redmineTaskDetailDAO" class="com.springapp.material.dao.impl.RedmineTaskDetailDAOImpl">
+        <property name="sessionFactory" ref="mySessionFactory"></property>
+    </bean>
+    <bean id="redmineFileDAO" class="com.springapp.material.dao.impl.RedmineFileDAOImpl">
+        <property name ="sessionFactory" ref="mySessionFactory"></property>
+    </bean>
+    <bean id="redmineDAOWatcher" class="com.springapp.material.dao.impl.RedmineDAOWatcherImpl">
+        <property name ="sessionFactory" ref="mySessionFactory"></property>
+    </bean>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+
+    <!--Oracle config-->
+    <bean id="myDataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+        <property name="username" value="materialdesignapp" />
+        <property name="password" value="babyranlovesme123456" />
+    </bean>
+    <!--MySQL config-->
+  <!--  <bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/sample" />
+        <property name="username" value="root" />
+        <property name="password" value="bpmconseil" />
+    </bean>-->
+
+    <bean id="mySessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>com.springapp.material.model.RedmineUser</value>
+                <value>com.springapp.material.model.RedmineGroup</value>
+                <value>com.springapp.material.model.TaskDetail</value>
+                <value>com.springapp.material.model.RedmineFile</value>
+                <value>com.springapp.material.model.Watcher</value>
+            </list>
+        </property>
+        <!--Oracle Hibernate Properties-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <!--MYSQL Properties-->
+
+       <!-- <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+-->
+
+
+
+
+        </bean>
+</beans>
